@@ -7,6 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%if @user%>
+<%= @user.email %>
+<%end%>
+<% flash.each do |key, value| %>
+	<%= content_tag(:div, value, class: "alert#{key}")%>
+<% end %>
 <div><%= link_to "Sign Out", logout_path, method: :delete %></div>
 <%= yield %>
 
