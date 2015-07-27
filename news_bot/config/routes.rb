@@ -4,23 +4,24 @@ Rails.application.routes.draw do
     resources :articles, shallow: true
   end
 
- resources :resets, only: [:new, :create]
+ 	resources :resets, only: [:new, :create]
 
- get '/articles/compare', to: "articles#compare"
+	root "articles#index"
+	get '/articles', to: "articles#index"
+	get '/articles/compare', to: "articles#compare"
 
- get '/resets/:token', to: "resets#edit", as: "reset"
- patch '/resets/:token', to: "resets#update"
+	get '/resets/:token', to: "resets#edit", as: "reset"
+	patch '/resets/:token', to: "resets#update"
 
- get 'login', to: "sessions#login", as: "login"
- post 'login', to: "sessions#attempt_login"
+	get 'login', to: "sessions#login", as: "login"
+	post 'login', to: "sessions#attempt_login"
 
- get '/signup', to: "sessions#signup", as: 'signup'
- post '/signup', to: "sessions#create"
+	get '/signup', to: "sessions#signup", as: 'signup'
+	post '/signup', to: "sessions#create"
 
- delete 'logout', to: "sessions#logout", as: "logout"
+	delete 'logout', to: "sessions#logout", as: "logout"
  
-#  Prefix Verb   URI Pattern                            Controller#Action
-#    user_articles GET    /users/:user_id/articles(.:format)     articles#index
+# 	 user_articles GET    /users/:user_id/articles(.:format)     articles#index
 #                  POST   /users/:user_id/articles(.:format)     articles#create
 # new_user_article GET    /users/:user_id/articles/new(.:format) articles#new
 #     edit_article GET    /articles/:id/edit(.:format)           articles#edit
@@ -38,6 +39,8 @@ Rails.application.routes.draw do
 #                  DELETE /users/:id(.:format)                   users#destroy
 #           resets POST   /resets(.:format)                      resets#create
 #        new_reset GET    /resets/new(.:format)                  resets#new
+#             root GET    /                                      articles#index
+#         articles GET    /articles(.:format)                    articles#index
 # articles_compare GET    /articles/compare(.:format)            articles#compare
 #            reset GET    /resets/:token(.:format)               resets#edit
 #                  PATCH  /resets/:token(.:format)               resets#update
