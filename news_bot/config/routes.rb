@@ -18,9 +18,8 @@ Rails.application.routes.draw do
  post '/signup', to: "sessions#create"
 
  delete 'logout', to: "sessions#logout", as: "logout"
-
-#        Prefix Verb   URI Pattern                            Controller#Action
-#             root GET    /                                      articles#index_all
+ 
+#  Prefix Verb   URI Pattern                            Controller#Action
 #    user_articles GET    /users/:user_id/articles(.:format)     articles#index
 #                  POST   /users/:user_id/articles(.:format)     articles#create
 # new_user_article GET    /users/:user_id/articles/new(.:format) articles#new
@@ -44,6 +43,7 @@ Rails.application.routes.draw do
 #                  PATCH  /resets/:token(.:format)               resets#update
 #            login GET    /login(.:format)                       sessions#login
 #                  POST   /login(.:format)                       sessions#attempt_login
+#           signup GET    /signup(.:format)                      sessions#signup
+#                  POST   /signup(.:format)                      sessions#create
 #           logout DELETE /logout(.:format)                      sessions#logout
-
  end

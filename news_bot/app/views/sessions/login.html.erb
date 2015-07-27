@@ -1,2 +1,23 @@
 <h1>Sessions#login</h1>
 <p>Find me in app/views/sessions/login.html.erb</p>
+
+
+<%= form_tag login_path do %>
+<div>
+  <%= label_tag "Email" %>
+  <%= text_field_tag :email%>
+</div>
+<div>
+  <%= label_tag "Password" %>
+  <%= password_field_tag :password%>
+</div>
+<div>
+  <%= submit_tag "Log In"%>
+</div>
+<% end %>
+<p>
+  <%= link_to "Don't have an account? Sign up here", signup_path%>
+</p>
+<p>
+  <%= link_to "Forgot your password?", new_reset_path%>
+</p>
