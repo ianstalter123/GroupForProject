@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root "articles#index_all"
-
   resources :users do
     resources :articles, shallow: true
   end
@@ -14,8 +12,10 @@ Rails.application.routes.draw do
  patch '/resets/:token', to: "resets#update"
 
  get 'login', to: "sessions#login", as: "login"
-
  post 'login', to: "sessions#attempt_login"
+
+ get '/signup', to: "sessions#signup", as: 'signup'
+ post '/signup', to: "sessions#create"
 
  delete 'logout', to: "sessions#logout", as: "logout"
 
