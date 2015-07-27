@@ -6,7 +6,7 @@ class UsersController < ApplicationController
  #  before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
-  	@user = User.find_by(session[:user_id])
+		@user = User.find_by(session[:user_id])
   	# @articles = @user.includes(:articles)
   end
 
