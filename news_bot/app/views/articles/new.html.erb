@@ -1,6 +1,7 @@
 <%= form_for [@user,@article] do |f| %>
 <%= f.label "url" %>
 <%= f.text_field :url  %>
-
+<%= f.label "Source" %>
+<%= f.text_field :source %>
 <%= f.submit "Add url"  %>
 <%end  %>
