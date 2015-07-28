@@ -7,20 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%if @user = User.find_by_id(session[:user_id])%>
-<%= @user.email %>
-<%end%>
+
+
 <% flash.each do |key, value| %>
 	<%= content_tag(:div, value, class: "alert#{key}")%>
 <% end %>
+
+
 <%if session[:user_id]%>
+<%@user = User.find_by_id(session[:user_id])  %>
+<%= @user.email %>
 <div><%= link_to "Sign Out", logout_path, method: :delete %></div>
+<div><%= link_to "New Article", new_user_article_path(session[:user_id]) %></div>
 <%else%>
 <div><%= link_to "Sign In", login_path, method: :delete %></div>
 <%end%>
 
 <div><%= link_to "Home", root_path %></div>
-<div><%= link_to "New Article", new_user_article_path(session[:user_id]) %></div>
+
+
 <%= yield %>
 
 </body>
