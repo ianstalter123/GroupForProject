@@ -11,10 +11,12 @@ class ArticlesController < ApplicationController
   	@article = Article.new 
   end
    def create
-
+    
    	 @article = Article.create article_params
+
     if @article.save
-      
+
+      @article.save_content
       redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
     else
       redirect_to new_user_article_path, flash: {error: @article.errors.full_messages}
@@ -28,6 +30,6 @@ class ArticlesController < ApplicationController
   
   private
   def article_params
-    params.require(:article).permit(:url, :title)
+    params.require(:article).permit(:url, :title, :text, :author, :source, :date_published)
   end
 end
