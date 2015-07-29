@@ -20,6 +20,9 @@ gem 'nokogiri'
 gem 'sidekiq'
 gem 'typhoeus'
 gem 'puma'
+gem 'json'
+
+gem 'alchemy-api-rb', :require => 'alchemy_api'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -49,6 +52,7 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-email'
   gem 'guard-rspec', require: false
+  gem 'dotenv-rails'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
