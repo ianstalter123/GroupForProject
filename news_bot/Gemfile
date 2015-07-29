@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+
 gem 'rest-client'
 gem 'activerecord-import', '~> 0.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

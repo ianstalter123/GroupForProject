@@ -1,18 +1,17 @@
 <h1>Articles#index</h1>
 <p>Find me in app/views/articles/index.html.erb</p>
-<% @articles.each do |article| %>
-	
-	
 
-<%= link_to article.title, article_path(article) %>
-	
-	<%=article.url  %>
-	<%=article.author  %>
+<div id= "articles" class= "ui relaxed grid">
+	<% @articles.each do |article| %>
+	<div id= "article" class= "four wide column">
+		<div id= "articleTitle" ><%= link_to article.title, article_path(article) %></div>
+		<div id= "articleImage" ><%=article.image  %></div>
+		<div id= "articleAutho" ><%=article.author  %></div>
+		<div id= "articleDate" ><%=article.date_published  %></div>
+		<div id= "articleText" ><%=truncate(article.text, length: 500)%></div>
+	</div>	
+	<% end %>
+	</div>
 
-	<%=article.date_published  %>
-	<%=article.text  %>
-	<br>
-	<br>
-<% end %>
 
 
