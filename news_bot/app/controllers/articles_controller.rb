@@ -23,7 +23,6 @@ class ArticlesController < ApplicationController
       @article.save_content
       if @article.save_content 
         
-        binding.pry
         ChartsWorker.perform_async(@article.id)
 
         binding.pry
