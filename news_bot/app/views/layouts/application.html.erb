@@ -9,26 +9,45 @@
 
 </head>
 <body>
+<div class="ui container">
 
 
 <% flash.each do |key, value| %>
 	<%= content_tag(:div, value, class: "alert#{key}")%>
 <% end %>
 
+<div id= "headingAll" class= "ui inverted masthead center aligned segment">
+	<div id = "navBar" class= "ui large inverted vertical masthead center aligned segment">
+		<div id= "leftMenu" class = "item"><%= link_to "HOME", root_path %></div>
+		
+		<%if session[:user_id]%>
+			<%@user = User.find_by_id(session[:user_id])  %>
+			<div id = "leftMenu" class = "item"><%= link_to "NEW ARTICLE", new_user_article_path(session[:user_id]) %></div>
+			<div id= "rightMenu">
+				<div   class="ui inverted button"><%= @user.email %></div>
+				<div  class = "ui inverted button"><%= link_to "Sign Out", logout_path, method: :delete %></div>
+			</div>
 
-<%if session[:user_id]%>
-<%@user = User.find_by_id(session[:user_id])  %>
-<%= @user.email %>
-<div><%= link_to "Sign Out", logout_path, method: :delete %></div>
-<div><%= link_to "New Article", new_user_article_path(session[:user_id]) %></div>
-<%else%>
-<div><%= link_to "Sign In", login_path, method: :delete %></div>
-<%end%>
-
-<div><%= link_to "Home", root_path %></div>
+		<%else%>
+			<div id = "rightMenu">
+				<div class = "ui inverted button"><%= link_to "Log In", login_path %></div>
+				<div class = "ui inverted button"><%= link_to "Sign Up", signup_path %></div>
+			</div>
+		<%end%>
+	</div>
+	<div class = "ui text container">
+		<h1 id = "company" class = "ui inverted header">
+		Make Your Own Biases
+		</h1>
+		<div id= "howItWorks" class="ui huge primary button">
+		How It Works 
+		<i class="right arrow icon"></i>
+		</div>
+	</div>
+</div>
 
 
 <%= yield %>
-
+</div>
 </body>
 </html>

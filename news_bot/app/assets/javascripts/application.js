@@ -13,8 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
 //= require turbolinks
 
 //= require highcharts/highcharts                                                           
 //= require highcharts/highcharts-more                                                         
 //= require highcharts/highstock
+
+
+// Loads all Semantic javascripts
+//= require semantic-ui
+>>>>>>> 9e945c0fbf10352268a5a0154de80313c66608dd
