@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+ 
+
   def index
   	@articles = Article.all
   end
@@ -6,22 +8,31 @@ class ArticlesController < ApplicationController
   def show
   	@article = Article.find_by_id(params[:id])
   end
-   def new
-
+  
+  def new
    	@user = User.find_by_id(session[:user_id])
   	@article = @user.articles.new 
     
   end
 
-   def create
+  def create
+    
+   	@article = Article.create article_params
 
      @user = User.find_by_id(session[:user_id])
    	 @article = @user.articles.create article_params
     
     if @article.save
-
       @article.save_content
-      redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
+      if @article.save_content 
+        @article.save_context
+        @article.save_keywords
+        @article.save_sentiment
+        redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
+      else
+        redirect_to new_user_article_path, flash: {error: @article.errors.full_messages}
+      end
+  
     else
       redirect_to new_user_article_path, flash: {error: @article.errors.full_messages}
 	end
@@ -33,7 +44,8 @@ class ArticlesController < ApplicationController
 
   
   private
-  def article_params
-    params.require(:article).permit(:url, :title, :text, :author, :source, :date_published, :user_id)
-  end
+    def article_params
+      params.require(:article).permit(:url, :title, :text, :author, :source, :date_published, :user_id)
+    end
+
 end
