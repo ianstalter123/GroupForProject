@@ -21,10 +21,11 @@ class ArticlesController < ApplicationController
     if @article.save
       @article.save_content
       AlchemyAPI.key = ENV['ALCHEMY_KEY']
-      results = AlchemyAPI::KeywordExtraction.new.search(url: 'http://www.alchemyapi.com/')
-      # alchemyapi = AlchemyAPI.new()
-      # results = AlchemyAPI
 
+      keyword = AlchemyAPI.search(:keyword_extraction, text: @article.text)
+      sentiment = AlchemyAPI.search(:sentiment_analysis, text: @article.text)
+      concept = AlchemyAPI.search(:concept_tagging, text: @article.text)
+      
       binding.pry
 
       redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
