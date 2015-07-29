@@ -1,6 +1,9 @@
 class Article < ActiveRecord::Base
 
 	belongs_to :user
+     has_one :context
+     has_one :sentiment
+     has_one :keyword
 
 	 def save_content
           url = self.url
