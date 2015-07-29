@@ -1,7 +1,8 @@
 class Article < ActiveRecord::Base
 
 	belongs_to :user
-
+     validates :title, presence: true
+     validates :url, presence: true
 	 def save_content
           url = self.url
           raw_html = Nokogiri::HTML(Typhoeus.get(self.url).response_body)
