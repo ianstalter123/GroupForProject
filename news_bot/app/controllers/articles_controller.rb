@@ -20,15 +20,16 @@ class ArticlesController < ApplicationController
 
     if @article.save
       @article.save_content
-      AlchemyAPI.key = ENV['ALCHEMY_KEY']
-
-      keyword = AlchemyAPI.search(:keyword_extraction, text: @article.text)
-      sentiment = AlchemyAPI.search(:sentiment_analysis, text: @article.text)
-      concept = AlchemyAPI.search(:concept_tagging, text: @article.text)
-      
-      binding.pry
-
-      redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
+      if @article.save_content 
+        @article.save_context
+        @article.save_keywords
+        @article.save_sentiment
+        binding.pry
+        redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
+      else
+        redirect_to new_user_article_path, flash: {error: @article.errors.full_messages}
+      end
+  
     else
       redirect_to new_user_article_path, flash: {error: @article.errors.full_messages}
 	end
@@ -40,7 +41,7 @@ class ArticlesController < ApplicationController
 
   
   private
-  def article_params
-    params.require(:article).permit(:url, :title, :text, :author, :source, :date_published)
-  end
+    def article_params
+      params.require(:article).permit(:url, :title, :text, :author, :source, :date_published)
+    end
 end
