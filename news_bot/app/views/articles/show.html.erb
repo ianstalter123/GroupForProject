@@ -4,3 +4,24 @@
 
 	<%=@article.date_published  %>
 	<%=@article.text  %>
+	<br>
+	<br>
+
+	Score:
+
+	<%=@article.score  %>
+	<br>
+	Relevance:
+
+	<%=@article.relevance  %>
+
+	<%= column_chart @article.keywords.group(:text).sum(:relevance) %>
+
+<%= pie_chart @article.contexts.group(:text).sum(:relevance)%>
+
+<%= line_chart @article.keywords.group(:text).sum(:relevance), discrete: true %>
+
+<%= high_chart("some_id", @chart) %>
+
+
+
