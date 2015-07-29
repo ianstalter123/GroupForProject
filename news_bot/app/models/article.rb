@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
 
 	belongs_to :user
-     validates :title, presence: true
+     validates :source, presence: true
      validates :url, presence: true
 	 def save_content
           url = self.url

@@ -7,13 +7,14 @@ class ArticlesController < ApplicationController
   	@article = Article.find_by_id(params[:id])
   end
    def new
-   	@user = User.find_by_id(session[:user_id])
-  	@article = Article.new 
+   	
+  	@article = @user.articles.new 
   end
-   def create
-    
-   	 @article = Article.create article_params
 
+   def create
+     @user = User.find_by_id(session[:user_id])
+   	 @article = @user.articles.create article_params
+    
     if @article.save
 
       @article.save_content
@@ -30,6 +31,6 @@ class ArticlesController < ApplicationController
   
   private
   def article_params
-    params.require(:article).permit(:url, :title, :text, :author, :source, :date_published)
+    params.require(:article).permit(:url, :title, :text, :author, :source, :date_published, :user_id)
   end
 end
