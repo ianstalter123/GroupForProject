@@ -47,12 +47,6 @@ class ArticlesController < ApplicationController
         
         ChartsWorker.perform_async(@article.id)
 
-        binding.pry
-      
-      #   @article.save_context
-      #   @article.save_keywords
-      #   @article.save_sentiment
-
         redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
       else
         redirect_to new_user_article_path, flash: {error: @article.errors.full_messages}
