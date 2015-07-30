@@ -5,12 +5,12 @@ class Article < ActiveRecord::Base
      validates :url, presence: true
      has_many :contexts
      has_many :keywords
+     
+	
+     def save_content
+          diffbotkey1 = ENV['DIFFBOT_KEY']
 
-	def save_content
-          AlchemyAPI.key = ENV['ALCHEMY_KEY']
-          diffbotkey = '505a59ea9a6b764b0b8488dee266d5f9'
-
-          url = URI.parse("http://api.diffbot.com/v3/article?token=" + diffbotkey + "&url=" + self.url)
+          url = URI.parse("http://api.diffbot.com/v3/article?token=#{diffbotkey1}&url=#{self.url}")
           req = Net::HTTP::Get.new(url.to_s)
           res = Net::HTTP.start(url.host, url.port) {|http|
                http.request(req)
@@ -24,24 +24,14 @@ class Article < ActiveRecord::Base
           
           # author may not work
           author    = diffbot_hash["objects"][0]["author"]
-
           date      = diffbot_hash["objects"][0]["date"] 
           if !date
                date = diffbot_hash["objects"][0]["estimatedDate"]     
           end  
+          
           self.update(raw_html: raw_html, text: text, author: author, title: title, date_published: date, image: image, source: source)
 
-          
-
-          # test_return = Typhoeus.get("http://api.diffbot.com/v3/article" self.url)
-
           binding.pry
-
-          # text = AlchemyAPI.search(:text_extraction, url: self.url)
-          # title = AlchemyAPI.search(:title_extraction, url: self.url)
-          # author = AlchemyAPI.search(:author_extraction, url: self.url)
-          # category = AlchemyAPI.search(:text_categorization, url: self.url)
-
 
           # url = self.url
           # raw_html = Nokogiri::HTML(Typhoeus.get(self.url).response_body)
