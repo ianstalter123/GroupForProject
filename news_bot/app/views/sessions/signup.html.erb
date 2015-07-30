@@ -6,7 +6,12 @@
 <% end %>
 
 
-<%= form_for @user, url: signup_path do |f| %>
+
+
+<div class="ui divider"></div>
+  <div class= "ui relaxed grid">
+    <div id= "signup" class= "seven wide column">
+      <%= form_for @user, url: signup_path do |f| %>
         
         <div class="form-group">
           <%= f.label :email %>
@@ -19,4 +24,23 @@
         </div>
 
         <%= f.submit "Signup", id:"submit-user", class:"btn btn-block btn-success text-center" %>
-<% end %> 
+      <% end %> 
+    </div>
+  
+  
+    <div id ="horizontalDiv" class="ui two column very  relaxed stackable grid">
+      <div class= "ui vertical divider">
+      OR
+      </div>
+    </div>
+
+    <div id= "loginLink" class= "seven wide column">
+      <div><%= link_to "Login", login_path %>
+      </div>
+    </div>
+
+  </div>
+<div class="ui divider"></div>
+
+
+

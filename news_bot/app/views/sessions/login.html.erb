@@ -1,23 +1,44 @@
 <h1>Sessions#login</h1>
 <p>Find me in app/views/sessions/login.html.erb</p>
 
+<div class="ui divider"></div>
+	<div class= "ui relaxed grid">
+		<div id= "login" class= "seven wide column">
+			<%= form_tag login_path do %>
+			<div>
+			  <%= label_tag "Email" %>
+			  <%= text_field_tag :email%>
+			</div>
+			<div>
+			  <%= label_tag "Password" %>
+			  <%= password_field_tag :password%>
+			</div>
+			<div>
+			  <%= submit_tag "Log In"%>
+			</div>
+			<% end %>
+			<p>
+			  <%= link_to "Don't have an account? Sign up here", 		signup_path	%>
+			</p>
+			<p>
+			  <%= link_to "Forgot your password?", new_reset_path%>
+			</p>
+		</div>
+	
+	
+		<div id ="horizontalDiv" class="ui two column very 	relaxed stackable grid">
+			<div class= "ui vertical divider">
+			OR
+			</div>
+		</div>
 
-<%= form_tag login_path do %>
-<div>
-  <%= label_tag "Email" %>
-  <%= text_field_tag :email%>
-</div>
-<div>
-  <%= label_tag "Password" %>
-  <%= password_field_tag :password%>
-</div>
-<div>
-  <%= submit_tag "Log In"%>
-</div>
-<% end %>
-<p>
-  <%= link_to "Don't have an account? Sign up here", signup_path%>
-</p>
-<p>
-  <%= link_to "Forgot your password?", new_reset_path%>
-</p>
+		<div id= "signupLink" class= "seven wide column">
+			<div><%= link_to "Sign Up", signup_path %>
+			</div>
+		</div>
+
+	</div>
+<div class="ui divider"></div>
+
+
+
