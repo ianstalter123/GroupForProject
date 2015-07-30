@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
 	validates :password, length: {minimum: 8, maximum: 20}
 
 	has_many :articles
+
+    def generate_password_reset_token!
+    update(password_reset_token: SecureRandom.urlsafe_base64(48))
+    end
 end
