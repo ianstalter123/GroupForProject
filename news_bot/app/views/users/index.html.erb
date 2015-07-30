@@ -17,19 +17,35 @@
 	<div class="ui divider"></div>
 </div>
 
-<div id= "articles" class= "ui relaxed grid">
-	<% @articles.each do |article| %>
-	<div id= "article" class= "four wide column">
-	<img src = <%=article.image  %> style="width:100px" id= "articleImage" ></img>
-		<div id= "articleTitle" ><%= link_to article.title, article_path(article) %></div>
-		<div id= "articleScore" >Score:<%=article.score  %></div>
-		<div id= "articleRelevance" >Relevance:<%=article.relevance  %></div>
-		
-		<div id= "articleAuthor" ><%=article.author  %></div>
-		<div id= "articleDate" ><%=article.date_published  %></div>
-		<div id= "articleText" ><%=truncate(article.text, length: 500)%></div>
-	</div>	
-	<% end %>
+
+<%= form_tag(compare_path, {method: "get"})	 do %>
+
+	<div id= "compareButton" class="ui huge violet button"> 
+			<%= submit_tag "Compare" %>
+	</div>
+
+	<div id= "articles" class= "ui relaxed grid">
+		<% @articles.each do |article| %>
+		<div id= "article" class= "four wide column">
+		<div id= "centerMe">
+			<img id= "articleImage" src = <%=article.image  %> style="height:100px"  ></img>
+		</div>
+			<div id= "articleTitle" ><%= link_to article.title, article_path(article) %></div>
+			<div id= "articleBase" >Score:<%=article.score  %></div>
+			<div id= "articleBase" >Relevance: <%=article.relevance  %></div>
+			
+			<div id= "articleBase" >Author: <%=article.author  %></div>
+			<div id= "articleBase" >Date: <%=article.date_published  %></div>
+			<br>
+			<div id= "articleText" ><%=truncate(article.text, length: 500)%></div>
+			<div class="ui checkbox">
+	  			<input type="checkbox" name="article_ids[]" value="<%=article.id%>">
+	  			<label>Select & Compare</label>
+			</div>
+		</div>	
+		<% end %>
+    <% end %>
+
 </div>
 
 

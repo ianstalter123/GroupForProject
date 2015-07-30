@@ -51,6 +51,13 @@ class ArticlesController < ApplicationController
   def compare
     @articles = Article.find(params[:article_ids])
   end
+
+  def destroy
+    @article = Article.find_by_id(params[:id])
+    @article.destroy
+        redirect_to user_articles_path(session[:user_id]), alert: "Article destroyed!"
+
+  end
   
   private
     def article_params
