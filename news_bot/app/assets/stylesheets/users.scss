@@ -8,16 +8,23 @@
 }
 #signupLink{
 	font-weight: lighter;
-	font-size: 20px;
 	text-align: center;
-	padding-top: 4em;
-	padding-bottom: 4em;
+	margin-left: 20px;
+	padding-top: 110px;
+	padding-bottom: 3em;
 	position: relative;
+	a{
+		font-size: 25px;
+	}
 }
 #login{
 	text-align: center;
 	padding-top: 1em;
 	position: relative;
+	p{
+		margin-top: 1em;
+		float: right;
+	}
 }
 #signup{
 	text-align: center;
@@ -26,9 +33,12 @@
 }
 #loginLink{
 	font-weight: lighter;
-	font-size: 20px;
 	text-align: center;
-	padding-top: 4em;
-	padding-bottom: 4em;
+	margin-left: 20px;
+	padding-top: 110px;
+	padding-bottom: 3em;
 	position: relative;
+	a{
+		font-size: 25px;
+	}
 }

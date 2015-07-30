@@ -1,30 +1,29 @@
-<h1>Sessions#signup</h1>
-<p>Find me in app/views/sessions/signup.html.erb</p>
-
-<% flash.each do |key, value| %>
-	<%= content_tag(:div, value, class: "alert#{key}")%>
-<% end %>
-
-
-
 
 <div class="ui divider"></div>
   <div class= "ui relaxed grid">
     <div id= "signup" class= "seven wide column">
+      <div class="ui form">
       <%= form_for @user, url: signup_path do |f| %>
-        
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.text_field :email %>
+        <div class="field">
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </div>
         </div>
-
-        <div class="form-group">
-          <%= f.label :password %>
-          <%= f.text_field :password %>
+        <div class="field">    
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.text_field :password %>
+          </div>
         </div>
-
+        <div class= "ui button">
         <%= f.submit "Signup", id:"submit-user", class:"btn btn-block btn-success text-center" %>
+        </div>
       <% end %> 
+      </div>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert#{key}")%>
+      <% end %>
     </div>
   
   

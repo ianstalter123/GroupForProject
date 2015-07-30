@@ -1,25 +1,23 @@
-<h1>Sessions#login</h1>
-<p>Find me in app/views/sessions/login.html.erb</p>
+
 
 <div class="ui divider"></div>
 	<div class= "ui relaxed grid">
 		<div id= "login" class= "seven wide column">
+			<div class="ui form">
 			<%= form_tag login_path do %>
-			<div>
+			<div class="field">
 			  <%= label_tag "Email" %>
 			  <%= text_field_tag :email%>
 			</div>
-			<div>
+			<div class="field">
 			  <%= label_tag "Password" %>
 			  <%= password_field_tag :password%>
 			</div>
-			<div>
+			<div class= "ui button">
 			  <%= submit_tag "Log In"%>
 			</div>
 			<% end %>
-			<p>
-			  <%= link_to "Don't have an account? Sign up here", 		signup_path	%>
-			</p>
+			</div>
 			<p>
 			  <%= link_to "Forgot your password?", new_reset_path%>
 			</p>
