@@ -16,4 +16,3 @@ class CreateArticles < ActiveRecord::Migration
 end
 
 
-<%= link_to "", _path %>

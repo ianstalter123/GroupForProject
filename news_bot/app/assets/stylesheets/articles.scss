@@ -73,6 +73,23 @@
 	}
 }
 
+#newArticle{
+	text-transform: capitalize;
+	text-align: center;
+	#label{
+		font-size: 20px;
+		margin: 5px;
+	}
+	#titleArticle{
+		font-weight: lighter;
+		font-size: 22px;
+		text-align: center;
+	}
+	#addButton{
+		margin-top: 10px;
+
+	}
+}
 
 
 
