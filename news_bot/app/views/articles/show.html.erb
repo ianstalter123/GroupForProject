@@ -27,7 +27,5 @@
 
 <%= line_chart @article.keywords.group(:text).sum(:relevance), discrete: true %>
 
-<%= high_chart("some_id", @chart) %>
-
 
 
