@@ -39,19 +39,11 @@ class ArticlesController < ApplicationController
     @user = User.find_by_id(session[:user_id])
    	@article = @user.articles.create article_params
     if @article
-      @article.save_content
-      if @article.save_content 
-        
-        ChartsWorker.perform_async(@article.id)
-
-        redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
-      else
-        redirect_to new_user_article_path, flash: {error: @article.errors.full_messages}
-      end
+      ChartsWorker.perform_async(@article.id)
+      redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
     else
       redirect_to new_user_article_path, flash: {error: @article.errors.full_messages}
-	  end
-  	
+    end
   end
 
   def compare
