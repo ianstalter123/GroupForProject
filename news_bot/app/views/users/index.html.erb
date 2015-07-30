@@ -26,6 +26,7 @@
 
 	<div id= "articles" class= "ui relaxed grid">
 		<% @articles.each do |article| %>
+		<%if article.user_id.to_i == session[:user_id]  %>
 		<div id= "article" class= "four wide column">
 		<div id= "centerMe">
 			<img id= "articleImage" src = <%=article.image  %> style="height:100px"  ></img>
@@ -42,7 +43,8 @@
 	  			<input type="checkbox" name="article_ids[]" value="<%=article.id%>">
 	  			<label>Select & Compare</label>
 			</div>
-		</div>	
+		</div>
+		<% end %>	
 		<% end %>
     <% end %>
 

@@ -1,6 +1,9 @@
 <div id="completeShow">
 	<div id= "articleShow">
+
+	<%if @article.user_id.to_i == session[:user_id]  %>
 	<%= link_to "destroy this article?", article_path(@article) , method: :delete, data: { confirm: 'Are you sure?' }%>
+	<%end  %>
 		<div id= "imageShow" class = "ui sixteen column">
 			<img src = <%=@article.image %> style="width:50%"></img>
 		</div>

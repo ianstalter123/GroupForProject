@@ -26,7 +26,7 @@
 			<%@user = User.find_by_id(session[:user_id])  %>
 			<div id = "leftMenu" class = "item"><%= link_to "NEW ARTICLE", new_user_article_path(session[:user_id]) %></div>
 			<div id= "rightMenu">
-				<div   class="ui inverted button"><%= @user.email %></div>
+				<div   class="ui inverted button"><%= link_to "My articles", user_articles_path(session[:user_id]) %></div>
 				<div  class = "ui inverted button"><%= link_to "Sign Out", logout_path, method: :delete %></div>
 			</div>
 
