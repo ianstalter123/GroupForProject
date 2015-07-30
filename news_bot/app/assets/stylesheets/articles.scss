@@ -38,7 +38,11 @@
 		}
 		#howItWorks{
 			margin-bottom: 10%;
+		}
+		a{
+			
 			font-weight: lighter;
+			color: white;
 		}
 		
 	}
@@ -91,5 +95,20 @@
 	}
 }
 
+p#titleAbout{
+	font-size: 25px;
+}
+
+div#space{
+	margin-right: 3%;
+}
+
+h1#titleTitle{
+	text-align: center;
+	font-size: 45px;
+	font-weight: lighter;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 
 
