@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   # end
 
   def index
+
+    @articles = Article.all
+
 		@user = User.find_by_id(params[:user_id])
+
   end
 
   def show

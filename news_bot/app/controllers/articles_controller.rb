@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
   def index
+    @user = User.find_by_id(session[:user_id])
   	@articles = Article.all
   end
 
@@ -49,6 +50,13 @@ class ArticlesController < ApplicationController
 
   def compare
     @articles = Article.find(params[:article_ids])
+  end
+
+  def destroy
+    @article = Article.find_by_id(params[:id])
+    @article.destroy
+        redirect_to user_articles_path(session[:user_id]), alert: "Article destroyed!"
+
   end
   
   private
