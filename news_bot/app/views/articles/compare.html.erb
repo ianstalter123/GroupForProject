@@ -1,2 +1,37 @@
-<h1>Articles#compare</h1>
-<p>Find me in app/views/articles/compare.html.erb</p>
+<h1>Compare</h1>
+<div class= "ui relaxed grid">
+<% @articles.each do |article| %>
+	<div class = "ui eight wide column" id="completeShow" >
+		<div id= "articleShow">
+			<div id= "imageShow">
+				<img src = <%=article.image %> style="height:230px"></img>
+			</div>
+			<div id = "titleShow">
+				<%=article.title  %>
+			</div>
+			<div id = "titleInfo">
+				<div>Author: <%=article.author  %></div>
+				<div>Date: <%=article.date_published  %></div>
+			</div>
+		</div>
+		<div id="score">
+			Score: <%=article.score  %>
+			<br>
+			Relevance: <%=article.relevance  %>
+		</div>
+		
+		<div id = "chart">
+		<%= column_chart article.keywords.group(:text).sum(:relevance) 	%>
+		</div>
+		<div id = "chart">
+		<%= pie_chart article.contexts.group(:text).sum(:relevance	)%>
+		</div>
+		<div id = "chart">
+		<%= line_chart article.keywords.group(:text).sum(:relevance), 	discrete: true %>
+		</div>
+		<div id = "textShow">
+				<%=truncate(article.text, length: 500)%>
+		</div>
+	</div>
+<% end %>
+</div>
