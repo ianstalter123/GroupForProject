@@ -66,15 +66,21 @@
 	}
 }
 
-#article {
-	color: black;
-	background-color: #F5F5F5;
-	margin: 2%;
-	border-radius: 4px;
-	font-weight: lighter;
-	#articles {
-		margin: auto;
+#articles {
+	#article {
+		color: black;
+		background-color: #F5F5F5;
+		margin: 2%;
+		border-radius: 4px;
+		font-weight: lighter;
+		#centerMe{
+			text-align: center;
+		}
+		#articleTitle{
+			text-align: center;
+		}
 	}
+	
 }
 
 #newArticle{
@@ -91,7 +97,6 @@
 	}
 	#addButton{
 		margin-top: 10px;
-
 	}
 }
 
@@ -109,6 +114,27 @@ h1#titleTitle{
 	font-weight: lighter;
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+#articleShow{
+	font-size: 17px;
+	line-height: 150%;
+	#imageShow{
+		text-align: center;
+		border-radius: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background-color:#F5F5F5; 
+	}
+	#titleShow{
+		text-align: center;
+		font-size: 30px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	#titleInfo{
+		margin-bottom: 10px;
+	}
 }
 
 
