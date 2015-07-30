@@ -37,11 +37,12 @@ class ArticlesController < ApplicationController
 
   def create
    	
-    @article = Article.create article_params
+    # @article = Article.create article_params
     @user = User.find_by_id(session[:user_id])
    	@article = @user.articles.create article_params
     
     if @article
+
       @article.save_content
       if @article.save_content 
         
