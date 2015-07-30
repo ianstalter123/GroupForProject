@@ -1,18 +1,18 @@
-<script>
-	
-
-
-</script>
-
-<%=@article.source  %>
-	<%=@article.title  %>
-	<%=@article.author  %>
-
-	<%=@article.date_published  %>
+<div id= "articleShow">
+	<div id= "imageShow" class = "ui sixteen column">
+		<img src = <%=@article.image  %> style="width:50%"  ></img>
+	</div>
+	<div id = "titleShow">
+		<%=@article.title  %>
+	</div>
+	<div id = "titleInfo">
+		<div>Author: <%=@article.author  %></div>
+		<div>Date: <%=@article.date_published  %></div>
+	</div>
 	<%=@article.text  %>
 	<br>
 	<br>
-
+</div>
 	Score:
 
 	<%=@article.score  %>
