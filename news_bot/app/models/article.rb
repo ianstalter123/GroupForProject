@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
 	belongs_to :user
-     validates :source, presence: true
+    
      validates :url, presence: true
      has_many :contexts
      has_many :keywords

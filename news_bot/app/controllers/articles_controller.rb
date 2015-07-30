@@ -6,20 +6,21 @@ class ArticlesController < ApplicationController
 
   def show
   	@article = Article.find_by_id(params[:id])
+    @articles = Article.all
 
     series = []
 
-    @article.keywords.each do |keyword|
-      series << [keyword.text,keyword.relevance]
+    @articles.each do |article|
+      series << [article.date_published,article.title]
     end
    
 
     bubble_series = [[1,15], [2,6], [3,5], [4,9]]
       @chart = LazyHighCharts::HighChart.new('bubble') do |f|
         f.title(text: 'Bubbles!')            
-        f.chart(type: 'bubble', zoomType: 'xy', plotBorderWidth: 1) 
+        f.chart(type: 'line', zoomType: 'xy', plotBorderWidth: 1) 
         f.series(
-          data: bubble_series,
+          data: series,
           marker: {
             fillColor: {
               radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
