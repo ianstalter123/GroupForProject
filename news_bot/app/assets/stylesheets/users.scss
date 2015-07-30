@@ -1,3 +1,44 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#horizontalDiv{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#signupLink{
+	font-weight: lighter;
+	text-align: center;
+	margin-left: 20px;
+	padding-top: 110px;
+	padding-bottom: 3em;
+	position: relative;
+	a{
+		font-size: 25px;
+	}
+}
+#login{
+	text-align: center;
+	padding-top: 1em;
+	position: relative;
+	p{
+		margin-top: 1em;
+		float: right;
+	}
+}
+#signup{
+	text-align: center;
+	padding-top: 1em;
+	position: relative;
+}
+#loginLink{
+	font-weight: lighter;
+	text-align: center;
+	margin-left: 20px;
+	padding-top: 110px;
+	padding-bottom: 3em;
+	position: relative;
+	a{
+		font-size: 25px;
+	}
+}
