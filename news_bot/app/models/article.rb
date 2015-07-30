@@ -1,6 +1,5 @@
 class Article < ActiveRecord::Base
 	belongs_to :user
-     validates :source, presence: true
      validates :url, presence: true
      has_many :contexts
      has_many :keywords
@@ -13,7 +12,6 @@ class Article < ActiveRecord::Base
                http.request(req)
           }
           diffbot_hash = JSON.parse(res.body)
-          
           text      = diffbot_hash["objects"][0]["text"]
           source    = diffbot_hash["objects"][0]["siteName"]  
           image     = diffbot_hash["objects"][0]["images"][0]["url"]
