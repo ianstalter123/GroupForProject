@@ -19,7 +19,7 @@
 <div id= "headingAll" class= "ui inverted masthead center aligned segment">
 	<div id = "navBar" class= "ui large inverted vertical masthead center aligned segment">
 		<div id= "leftMenu"  class = "item"><%= link_to "HOME", root_path %></div>
-		<div id= "leftMenu" class = "item"><%= link_to "ABOUT", root_path %></div>
+		<div id= "leftMenu" class = "item"><%= link_to "ABOUT", about_path %></div>
 		
 		<%if session[:user_id]%>
 			<%@user = User.find_by_id(session[:user_id])  %>
@@ -40,8 +40,8 @@
 		<h1 id = "company" class = "ui inverted header">
 		Make Your Own Biases
 		</h1>
-		<div id= "howItWorks" class="ui huge primary button">
-		How It Works 
+		<div id= "howItWorks" class="ui huge primary button"> 
+		<%= link_to "How It Works", about_path %>
 		<i class="right arrow icon"></i>
 		</div>
 	</div>

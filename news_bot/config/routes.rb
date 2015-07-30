@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 	get '/articles', to: "articles#index"
 	get '/articles/compare', to: "articles#compare"
 
+	get '/about', to: "static#about", as: "about"
+
 	get '/resets/:token', to: "resets#edit", as: "reset"
 	patch '/resets/:token', to: "resets#update"
 
