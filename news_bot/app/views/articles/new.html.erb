@@ -1,7 +1,7 @@
 <%= form_for [@user,@article] do |f| %>
-<%= f.label "url" %>
-<%= f.text_field :url  %>
-<%= f.label "Source" %>
-<%= f.text_field :source %>
-<%= f.submit "Add url"  %>
-<%end  %>
+	<%= f.label "url" %>
+	<%= f.text_field :url  %>
+	<%= f.select :source, [['BBC News','BBC News'],['FOX News','Fox'],['Huffington Post','Huffington Post'],['CNN','CNN']] %>
+	<%= f.submit "Add Article"  %>
+<%end %>
+
