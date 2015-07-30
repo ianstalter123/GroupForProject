@@ -17,10 +17,10 @@
 	<div class="ui divider"></div>
 </div>
 
+<div id="compareForm">
 <%= form_tag(compare_path, {method: "get"})	 do %>
-
-	<div id= "compareButton" class="ui huge violet button"> 
-			<%= submit_tag "Compare" %>
+	<div id= "compareButton" > 
+			<%= submit_tag "Compare", class: "ui huge violet button" %>
 	</div>
 
 	<div id= "articles" class= "ui relaxed grid">
@@ -40,11 +40,13 @@
 			<div class="ui checkbox">
 	  			<input type="checkbox" name="article_ids[]" value="<%=article.id%>">
 	  			<label>Select & Compare</label>
-			</div>
-		</div>	
+	  		</div>
+		</div>
 		<% end %>
     <% end %>
+</div>	
 </div>
+
 
 
 

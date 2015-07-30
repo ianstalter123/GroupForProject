@@ -166,9 +166,12 @@ h1#titleTitle{
 	margin-bottom: 10px;
 	padding: 5px;
 }
-#compareButton a{
-	color:white;
+#compare {
+	#compareButton {
+		/*color:white;*/
+	}
 }
+
 #textShow{
 		background-color:#F5F5F5;
 		border-radius: 10px;
