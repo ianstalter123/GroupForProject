@@ -19,6 +19,8 @@
 
 <div id= "articles" class= "ui relaxed grid">
 	<% @articles.each do |article| %>
+
+	
 	<div id= "article" class= "four wide column">
 	<img src = <%=article.image  %> style="width:100px" id= "articleImage" ></img>
 		<div id= "articleTitle" ><%= link_to article.title, article_path(article) %></div>
@@ -29,6 +31,7 @@
 		<div id= "articleDate" ><%=article.date_published  %></div>
 		<div id= "articleText" ><%=truncate(article.text, length: 500)%></div>
 	</div>	
+	
 	<% end %>
 </div>
 

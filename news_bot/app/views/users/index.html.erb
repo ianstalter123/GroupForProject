@@ -1,6 +1,38 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div id="middleBar">
+	<div class="ui divider"></div>
+		<div class= "ui relaxed grid">
+			<div id= "pageTitle" class= "six wide column">
+				<h1>User Submitted</h1>
+				<h1>Articles</h1>
+			</div>
+			<div id ="horizontalDiv" class="ui two column very 	relaxed 	stackable grid">
+				<div class= "ui vertical divider">
+				explore
+				</div>
+			</div>
+			<div id= "pageDescription" class="ui eight wide column">
+				<p>Click on the article name for more information. 		Check two boxes and click compare to compare the 	two 	articles' data.</p>
+			</div>
+		</div>
+	<div class="ui divider"></div>
+</div>
 
-<div><%= link_to "Sign Out", logout_path, method: :delete %></div>
+<div id= "articles" class= "ui relaxed grid">
+	<% @articles.each do |article| %>
+	<%=@user.id  %>
+	<%= article.user_id %>
+	<div id= "article" class= "four wide column">
+	<img src = <%=article.image  %> style="width:100px" id= "articleImage" ></img>
+		<div id= "articleTitle" ><%= link_to article.title, article_path(article) %></div>
+		<div id= "articleScore" >Score:<%=article.score  %></div>
+		<div id= "articleRelevance" >Relevance:<%=article.relevance  %></div>
+		
+		<div id= "articleAuthor" ><%=article.author  %></div>
+		<div id= "articleDate" ><%=article.date_published  %></div>
+		<div id= "articleText" ><%=truncate(article.text, length: 500)%></div>
+	</div>	
+	<% end %>
+</div>
+
 
 

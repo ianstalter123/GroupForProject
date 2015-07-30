@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def index
 		@user = User.find_by(session[:user_id])
+    @articles = Article.all
   end
 
   def show
