@@ -1,31 +1,36 @@
-<div id= "articleShow">
-	<div id= "imageShow" class = "ui sixteen column">
-		<img src = <%=@article.image  %> style="width:50%"  ></img>
+<div id="completeShow">
+	<div id= "articleShow">
+		<div id= "imageShow" class = "ui sixteen column">
+			<img src = <%=@article.image %> style="width:50%"></img>
+		</div>
+		<div id = "titleShow">
+			<%=@article.title  %>
+		</div>
+		<div id = "titleInfo">
+			<div>Author: <%=@article.author  %></div>
+			<div>Date: <%=@article.date_published  %></div>
+		</div>
+		<div id = "textShow">
+			<%=@article.text  %>
+		</div>
+	
 	</div>
-	<div id = "titleShow">
-		<%=@article.title  %>
+	<div id="score">
+		Score: <%=@article.score  %>
+		<br>
+		Relevance: <%=@article.relevance  %>
 	</div>
-	<div id = "titleInfo">
-		<div>Author: <%=@article.author  %></div>
-		<div>Date: <%=@article.date_published  %></div>
-	</div>
-	<%=@article.text  %>
-	<br>
-	<br>
-</div>
-	Score:
-
-	<%=@article.score  %>
-	<br>
-	Relevance:
-
-	<%=@article.relevance  %>
-
+	
+	<div id = "chart">
 	<%= column_chart @article.keywords.group(:text).sum(:relevance) %>
-
-<%= pie_chart @article.contexts.group(:text).sum(:relevance)%>
-
-<%= line_chart @article.keywords.group(:text).sum(:relevance), discrete: true %>
+	</div>
+	<div id = "chart">
+	<%= pie_chart @article.contexts.group(:text).sum(:relevance	)%>
+	</div>
+	<div id = "chart">
+	<%= line_chart @article.keywords.group(:text).sum(:relevance), discrete: true %>
+	</div>
+</div>
 
 
 

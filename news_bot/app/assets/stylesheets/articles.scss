@@ -127,6 +127,11 @@ h1#titleTitle{
 		background-color:#F5F5F5; 
 	}
 	#titleShow{
+		margin-top: 10px;
+		border-radius: 5px;
+		background-color: black;
+		opacity: .5;
+		color: white;
 		text-align: center;
 		font-size: 30px;
 		padding-top: 15px;
@@ -135,6 +140,39 @@ h1#titleTitle{
 	#titleInfo{
 		margin-bottom: 10px;
 	}
+	#textShow{
+		background-color:#F5F5F5;
+		border-radius: 10px;
+		padding: 5px; 
+	}
 }
+#score{
+	margin-bottom: 20px;
+	margin-top: 10px;
+	background-color: black;
+	opacity: .5;
+	font-weight: bold;
+	color: white;
+	border-radius: 5px;
+	text-transform: capitalize;
+	text-align: center;	
+	padding: 4px;
+	font:18px;
+}
+#chart{
+	background-color: #F5F5F5;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+#compareButton a{
+	color:white;
+}
+#textShow{
+		background-color:#F5F5F5;
+		border-radius: 10px;
+		padding: 5px; 
+	}
 
 
