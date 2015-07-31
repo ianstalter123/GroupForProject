@@ -48,13 +48,17 @@
 			<div id= "articleBase" >Date: <%=article.date_published  %></div>
 			<br>
 			<div id="score">
+
 					<% if article.score.to_f <= -0.1 %>
+
 						<div id="redScore">
 							Score: <%=article.score  %>
 							<br>
 							Relevance: <%=article.relevance  %>
 						</div>
+
 					<% elsif article.score.to_f <= 0%>
+
 						<div id="orangeScore">
 							Score: <%=article.score  %>
 							<br>
