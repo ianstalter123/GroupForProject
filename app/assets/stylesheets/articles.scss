@@ -172,6 +172,31 @@ h1#titleTitle{
 		background-color: green;
 	}
 }
+#score{
+	margin-bottom: 20px;
+	margin-top: 10px;
+	background-color: black;
+	opacity: .5;
+	font-weight: bold;
+	color: white;
+	border-radius: 5px;
+	text-transform: capitalize;
+	text-align: center;	
+	padding: 4px;
+	font:18px;
+	#redScore{
+		background-color: #b40000;
+	}
+	#orangeScore{
+		background-color: #ff6a00;
+	}
+	#yellowScore{
+		background-color: #ffd500;
+	}
+	#greenScore{
+		background-color: green;
+	}
+}
 #chart{
 	background-color: #F5F5F5;
 	border-radius: 5px;
