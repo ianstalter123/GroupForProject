@@ -5,7 +5,7 @@
 	<%= link_to "destroy this article?", article_path(@article) , method: :delete, data: { confirm: 'Are you sure?' }%>
 	<%end  %>
 		<div id= "imageShow" class = "ui sixteen column">
-			<img src = <%=@article.image %> style="width:50%"></img>
+			<img src = <%=@article.image %> style="height:300px"></img>
 		</div>
 		<div id = "titleShow">
 			<%=@article.title  %>
@@ -17,13 +17,41 @@
 		<div id = "textShow">
 			<%=@article.text  %>
 		</div>
-	
 	</div>
-	<div id="score">
-		Score: <%=@article.score  %>
-		<br>
-		Relevance: <%=@article.relevance  %>
+	<div id="scoreShow">
+	<% if @article.score <= -0.1 %>
+		<div id="redScore">
+			Score: <%=@article.score  %>
+			<br>
+			Relevance: <%=@article.relevance  %>
+		</div>
+	<% elsif @article.score <= 0%>
+		<div id="orangeScore">
+			Score: <%=@article.score  %>
+			<br>
+			Relevance: <%=@article.relevance  %>
+		</div>
+	<% elsif @article.score == 0%>
+		<div id="whiteScore">
+			Score: <%=@article.score  %>
+			<br>
+			Relevance: <%=@article.relevance  %>
+		</div>
+	<% elsif @article.score >= 0.1%>
+		<div id="greenScore">
+			Score: <%=@article.score  %>
+			<br>
+			Relevance: <%=@article.relevance  %>
+		</div>
+	<% else %>
+		<div id="yellowScore">
+			Score: <%=@article.score  %>
+			<br>
+			Relevance: <%=@article.relevance  %>
+		</div>
+	<% end %>
 	</div>
+
 	
 	<div id = "chart">
 	<%= column_chart @article.keywords.group(:text).sum(:relevance) %>
