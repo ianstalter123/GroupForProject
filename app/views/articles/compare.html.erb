@@ -21,14 +21,14 @@
 		</div>
 		
 		<div id = "chart">
+		How relevant are keywords to article
 		<%= column_chart article.keywords.group(:text).sum(:relevance) 	%>
 		</div>
 		<div id = "chart">
+		Concepts by context tagging
 		<%= pie_chart article.contexts.group(:text).sum(:relevance	)%>
 		</div>
-		<div id = "chart">
-		<%= line_chart article.keywords.group(:text).sum(:relevance), 	discrete: true %>
-		</div>
+		
 		<div id = "textShow">
 				<%=truncate(article.text, length: 500)%>
 		</div>
