@@ -20,25 +20,25 @@
 	
 	</div>
 	<div id="scoreShow">
-	<% if @article.score <= -0.1 %>
+	<% if @article.score.to_f <= -0.1 %>
 		<div id="redScore">
 			Score: <%=@article.score  %>
 			<br>
 			Relevance: <%=@article.relevance  %>
 		</div>
-	<% elsif @article.score <= 0%>
+	<% elsif @article.score.to_f <= 0%>
 		<div id="orangeScore">
 			Score: <%=@article.score  %>
 			<br>
 			Relevance: <%=@article.relevance  %>
 		</div>
-	<% elsif @article.score == 0%>
+	<% elsif @article.score.to_f == 0%>
 		<div id="whiteScore">
 			Score: <%=@article.score  %>
 			<br>
 			Relevance: <%=@article.relevance  %>
 		</div>
-	<% elsif @article.score >= 0.1%>
+	<% elsif @article.score.to_f >= 0.1%>
 		<div id="greenScore">
 			Score: <%=@article.score  %>
 			<br>
