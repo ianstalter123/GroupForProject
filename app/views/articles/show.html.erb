@@ -53,15 +53,15 @@
 	<% end %>
 	</div>
 	
+	How relevant are keywords to article
 	<div id = "chart">
 	<%= column_chart @article.keywords.group(:text).sum(:relevance) %>
 	</div>
+	Concepts by context tagging
 	<div id = "chart">
 	<%= pie_chart @article.contexts.group(:text).sum(:relevance	)%>
 	</div>
-	<div id = "chart">
-	<%= line_chart @article.keywords.group(:text).sum(:relevance), discrete: true %>
-	</div>
+
 
 </div>
 
