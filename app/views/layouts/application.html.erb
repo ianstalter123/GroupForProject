@@ -21,6 +21,11 @@
 	<div id = "navBar" class= "ui large inverted vertical masthead center aligned segment">
 		<div id= "leftMenu"  class = "item"><%= link_to "HOME", root_path %></div>
 		<div id= "leftMenu" class = "item"><%= link_to "ABOUT", about_path %></div>
+		<div id= "leftMenu" class = "item"><%= form_tag("/articles/crawl", method: "get",class:"test" ) do %>
+ 
+  <%= text_field_tag(:q,) %>
+  <%= submit_tag("Crawl") %>
+<% end %></div>
 		
 		<%if session[:user_id]%>
 			<%@user = User.find_by_id(session[:user_id])  %>

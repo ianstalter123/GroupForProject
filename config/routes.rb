@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 	get "/users/:user_id/articles", to: "users#index", as: "user_articles"
   get '/articles/compare', to: "articles#compare", as: "compare"
+
+  get '/articles/crawl', to: "articles#crawl", as: "crawl"
   resources :users do
     resources :articles, shallow: true
   end

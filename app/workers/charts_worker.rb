@@ -7,8 +7,11 @@ class	ChartsWorker
 		# How else can I do a callback here?
 		if article.save_content 
 			article.save_context
+
 	    article.save_keywords
+
 	    article.save_sentiment
+	    
 	  end  
 	end
 end		

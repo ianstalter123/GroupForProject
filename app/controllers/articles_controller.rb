@@ -42,6 +42,7 @@ class ArticlesController < ApplicationController
    	@article = @user.articles.create article_params
     if @article
       ChartsWorker.perform_async(@article.id)
+      
       redirect_to user_articles_path(session[:user_id]), flash: {success: "Created!"}
     else
       redirect_to new_user_article_path, flash: {error: @article.errors.full_messages}
@@ -49,7 +50,37 @@ class ArticlesController < ApplicationController
   end
 
   def compare
+    @user = User.find_by_id(session[:user_id])
     @articles = Article.find(params[:article_ids])
+  end
+
+  def crawl
+    @user = User.find_by_id(session[:user_id])
+    x = params[:q]
+
+
+    url = x
+    response = RestClient.get url, :user_agent => 'Chrome'
+    doc = Nokogiri::HTML(response)
+
+    #need 2check for an empty article and remove if blank!
+
+    @l = doc.css("h3[class='title'] a").map { |link| link['href'] }
+    @l.each do |link|
+        @article = @user.articles.create(url: link)
+        if @article
+        ChartsWorker.perform_async(@article.id)
+        end
+       end
+     redirect_to user_articles_path(session[:user_id])
+    #first just get a google search result page of links with ruby.
+    #for each result link create an article
+  #goal: get a google page of results
+  #goal: get a list of links from the results
+  #goal: create a new article using above methods from each result
+
+
+
   end
 
   def destroy
