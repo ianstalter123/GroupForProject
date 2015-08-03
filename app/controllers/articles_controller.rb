@@ -52,6 +52,11 @@ class ArticlesController < ApplicationController
   def compare
     @user = User.find_by_id(session[:user_id])
     @articles = Article.find(params[:article_ids])
+    @score = 0
+    @articles.each do |article|
+      @score += article.score.to_f
+    end
+    @score /= @articles.length
   end
 
   def crawl
