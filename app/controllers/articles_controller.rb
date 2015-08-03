@@ -64,13 +64,23 @@ class ArticlesController < ApplicationController
     x = params[:q]
 
 
+
     url = x
-    response = RestClient.get url, :user_agent => 'Chrome'
-    doc = Nokogiri::HTML(response)
+    #response = RestClient.get url, :user_agent => 'Chrome'
+    # doc = Nokogiri::HTML(response)
+
+    doc = Mechanize.new
+    doc.get("https://www.yahoo.com/")
+    doc.page.forms
+    form = doc.page.forms.first
+    form.p = x
+    form.submit
+    doc1 = Nokogiri::HTML(doc.page.body)
+    # doc.page.links
 
     #need 2check for an empty article and remove if blank!
 
-    @l = doc.css("h3[class='title'] a").map { |link| link['href'] }
+    @l = doc1.css("h3[class='title'] a").map { |link| link['href'] }
     @l.each do |link|
         @article = @user.articles.create(url: link)
         if @article
