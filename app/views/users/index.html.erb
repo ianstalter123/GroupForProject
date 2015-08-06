@@ -23,6 +23,9 @@
 	<div class="ui divider"></div>
 </div>
 
+<div class="chart">
+	<%= line_chart(@article_hash) %>	
+</div>
 
 <%= form_tag(compare_path, {method: "get"})	 do %>
 
@@ -38,8 +41,6 @@
 			<img id= "articleImage" src = <%=article.image  %> style="height:100px"  ></img>
 		</div>
 			<div id= "articleTitle" ><%= link_to article.title, article_path(article) %></div>
-			
-			
 			<div id= "articleBase" >Author: <%=article.author  %></div>
 			<div id= "articleBase" >Date: <%=article.date_published  %></div>
 			<br>
