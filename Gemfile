@@ -8,6 +8,7 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 gem 'rest-client'
 gem 'lazy_high_charts'
+gem 'open-uri'
 
 
 gem 'activerecord-import', '~> 0.7.0'

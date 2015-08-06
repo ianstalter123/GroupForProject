@@ -39,28 +39,60 @@ class ArticlesController < ApplicationController
     @user = User.find_by_id(session[:user_id])
     x = params[:q]
     url = x
-    doc = Mechanize.new
-    # doc.get("http://www.msnbc.com/")
-    doc.get("https://www.yahoo.com/")
-    doc.page.forms
-    form = doc.page.forms.first
-    form.p = x
-    form.submit
-    doc1 = Nokogiri::HTML(doc.page.body)
+     doc = Mechanize.new
+    # # doc.get("http://www.msnbc.com/")
+    # doc.get("http://www.cnn.com/")
+    # doc.page.forms
 
+    # #yahoo form = doc.page.forms.first
+    # form = doc.page.form("headerSearch")
+
+    # #yahoo form.p = x
+
+    # form.fields[0].value = x
+    # y = form.submit
+    # doc1 = Nokogiri::HTML(doc.page.body)
+    # binding.pry
+
+    
     # doc.page.links
     # for cnn break it down to get individual articles
     #need 2check for an empty article and remove if blank!
+    page = "http://searchapp.cnn.com/search/query.jsp?page=1&npp=10&start=1&text=" + url + "&type=all&bucket=true&sort=relevance&csiID=csi1"
+     require 'open-uri'
+    doc = Nokogiri::HTML(open(page).read)
+    x = JSON.parse doc.css("textarea").text
 
+    x['results'][0].each do |result|
+      
 
-    @l = doc1.css("h3[class='title'] a").map { |link| link['href'] }
-    @l.each do |link|
-        @article = @user.articles.create(url: link)
-        if @article
+      if result['url'].starts_with? 'http://', 'https://'
+        @article = @user.articles.create(url: result['url'])
+      else
+         
+      @article = @user.articles.create(url: "http://www.cnn.com/" + result['url'])
+      if @article
         ChartsWorker.perform_async(@article.id)
         end
        end
+     end
      redirect_to user_articles_path(session[:user_id])
+
+  # request = doc.get(page, :headers=>{"User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36"})
+   
+ 
+
+
+   
+   
+    # @l = doc1.css("h3[class='title'] a").map { |link| link['href'] }
+    # @l.each do |link|
+    #     @article = @user.articles.create(url: link)
+    #     if @article
+    #     ChartsWorker.perform_async(@article.id)
+    #     end
+    #    end
+    #  redirect_to user_articles_path(session[:user_id])
 
     #first just get a google search result page of links with ruby.
     #for each result link create an article
