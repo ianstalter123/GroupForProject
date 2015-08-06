@@ -9,7 +9,7 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'rest-client'
 gem 'lazy_high_charts'
 
-gem 'chartkick'
+
 gem 'activerecord-import', '~> 0.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -31,6 +31,9 @@ gem 'sidekiq'
 gem 'typhoeus'
 gem 'puma'
 gem 'json'
+gem 'chartkick'
+gem 'groupdate', '~> 2.1.1'
+gem 'active_median', '~> 0.1.0'
 
 gem 'alchemy-api-rb', :require => 'alchemy_api'
 

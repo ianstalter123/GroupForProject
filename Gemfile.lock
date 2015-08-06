@@ -27,6 +27,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_median (0.1.2)
+      activerecord
     activejob (4.2.3)
       activesupport (= 4.2.3)
       globalid (>= 0.3.0)
@@ -96,6 +98,8 @@ GEM
     formatador (0.2.5)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    groupdate (2.1.1)
+      activerecord (>= 3.0.0)
     guard (2.12.9)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -292,6 +296,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_median (~> 0.1.0)
   activerecord-import (~> 0.7.0)
   alchemy-api-rb
   bcrypt (~> 3.1.7)
@@ -301,6 +306,7 @@ DEPENDENCIES
   chartkick
   coffee-rails (~> 4.1.0)
   dotenv-rails
+  groupdate (~> 2.1.1)
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails

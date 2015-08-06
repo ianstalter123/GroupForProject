@@ -6,10 +6,16 @@ class UsersController < ApplicationController
   # end
 
   def index
-
     @articles = Article.all
-
 		@user = User.find_by_id(params[:user_id])
+    
+    # The Sentiment chart needs a hash of the dates and scores      
+    @article_hash = {}
+    @articles.each do |article|
+      if article[:date_published]
+        @article_hash[article[:date_published]] = article[:score]
+      end  
+    end 
 
   end
 
