@@ -58,8 +58,13 @@ class ArticlesController < ApplicationController
     # doc.page.links
     # for cnn break it down to get individual articles
     #need 2check for an empty article and remove if blank!
+
     page = "http://searchapp.cnn.com/search/query.jsp?page=1&npp=10&start=1&text=" + url + "&type=all&bucket=true&sort=relevance&csiID=csi1"
-     require 'open-uri'
+    require 'open-uri'
+    page = URI.escape(page)
+    page = page.gsub(/%20/, '%2B')
+   
+
     doc = Nokogiri::HTML(open(page).read)
     x = JSON.parse doc.css("textarea").text
 
