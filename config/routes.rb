@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 	root "articles#index"
 	get '/articles', to: "articles#index"
 
-
 	get '/about', to: "static#about", as: "about"
 
 	get '/resets/:token', to: "resets#edit", as: "reset"
