@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
     form.submit
     doc1 = Nokogiri::HTML(doc.page.body)
     # doc.page.links
-
+    # for cnn break it down to get individual articles
     #need 2check for an empty article and remove if blank!
 
     @l = doc1.css("h3[class='title'] a").map { |link| link['href'] }
@@ -93,6 +93,8 @@ class ArticlesController < ApplicationController
   #goal: get a google page of results
   #goal: get a list of links from the results
   #goal: create a new article using above methods from each result
+  #goal: check to see if an article content is blank on create and 
+         #delete if so
 
 
 

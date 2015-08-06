@@ -38,6 +38,7 @@
 
 	<div id= "articles" class= "ui relaxed grid">
 		<% @articles.each do |article| %>
+		<!--if article.text != 'nil'-->
 		<div id= "article" class= "four wide column">
 		<div id= "centerMe">
 			<img id= "articleImage" src = <%=article.image  %> style="height:100px"  ></img>

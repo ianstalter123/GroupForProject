@@ -8,10 +8,14 @@ class	ChartsWorker
 		if article.save_content 
 			article.save_context
 
-	    article.save_keywords
+		if article.save_context 
+	    	article.save_keywords
 
-	    article.save_sentiment
+	    if article.save_keywords 
+	    	article.save_sentiment
 	    
 	  end  
 	end
+end
+end
 end		

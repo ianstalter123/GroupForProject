@@ -4,7 +4,29 @@ class Article < ActiveRecord::Base
      validates :url, presence: true
      has_many :contexts
      has_many :keywords
-	
+
+     puts "*"*100
+
+     def self.this_shit(someurl)
+       encodedshit = URI.encode(someurl)
+       url = URI.parse("http://api.diffbot.com/v3/article?token=#{ENV['DIFFBOT_KEY']}&url=#{encodedshit}")
+       req = Net::HTTP::Get.new(url.to_s)
+       res = Net::HTTP.start(url.host, url.port) {|http|
+       http.request(req)
+       }
+
+       diffbot_hash = JSON.parse(res.body)
+
+       puts 
+       if diffbot_hash['error']
+          self.dieeeeee
+     end
+     end
+
+	# 'http://www.foxnews.com/us/2015/08/04/suspect-memphis-police-officer-killed-charged-murder/?intcmp=hpbt2'
+     # "http://www.bbc.com/culture/story/20150804-comedy-in-the-age-of-outrage-when-jokes-go-too-far"
+     # "http://www.foxnews.com/us/2015/08/04/suspect-memphis-police-officer-killed-charged-murder/"
+
      def save_content
           diffbotkey1 = ENV['DIFFBOT_KEY']
           url = URI.parse("http://api.diffbot.com/v3/article?token=#{diffbotkey1}&url=#{self.url}")
@@ -20,10 +42,14 @@ class Article < ActiveRecord::Base
           # author may not work everytime
           author    = diffbot_hash["objects"][0]["author"]
           date      = diffbot_hash["objects"][0]["date"] 
+     
           unless date
                date = diffbot_hash["objects"][0]["estimatedDate"]     
-          end            
+          end  
+        
           self.update(raw_html: raw_html, text: text, author: author, title: title, date_published: date, image: image, source: source)
+          
+
 	end
 
      def save_sentiment
