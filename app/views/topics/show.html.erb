@@ -1,0 +1,99 @@
+<div id="middleBar">
+	<div class="ui divider"></div>
+		<div class= "ui relaxed grid">
+			<div id= "pageTitle" class= "six wide column">
+				<h1>View Your</h1>
+				<h1>Articles</h1>
+			</div>
+			<div id ="horizontalDiv" class="ui two column very 	relaxed 	stackable grid">
+				<div class= "ui vertical divider">
+				explore
+				</div>
+			</div>
+			<div id= "pageDescription" class="ui eight wide column">
+			<ul>
+				<li>Click on the article title for more information and data analysis.</li>
+					<br>
+					<li>Select two or more articles and click compare to compare the articles' data.</li>
+					<br>
+					<li>Compare similar topics and current events from different news sources to see their biases.</li>
+				</ul>
+			</div>
+		</div>
+	<div class="ui divider"></div>
+</div>
+
+<div class="chart">
+	<%= line_chart(@article_hash) %>	
+</div>
+
+<%= form_tag(compare_path, {method: "get"})	 do %>
+
+<div id= "compareButton"> 
+			<%= submit_tag "Compare", class: "ui huge violet button"%>
+	</div>
+
+	<div id= "articles" class= "ui relaxed grid">
+		<% @articles.each do |article| %>
+		
+		<div id= "article" class= "four wide column">
+		<div id= "centerMe">
+			<img id= "articleImage" src = <%=article.image  %> style="height:100px"  ></img>
+		</div>
+			<div id= "articleTitle" ><%= link_to article.title, article_path(article) %></div>
+			<div id= "articleBase" >Author: <%=article.author  %></div>
+			<div id= "articleBase" >Date: <%=article.date_published  %></div>
+			<br>
+			<div id="score">
+					<% if article.score.to_f <= -0.1 %>
+						<div id="redScore">
+							Score: <%=article.score  %>
+							<br>
+							Relevance: <%=article.relevance  %>
+						</div>
+					<% elsif article.score.to_f <= 0%>
+						<div id="orangeScore">
+							Score: <%=article.score  %>
+							<br>
+							Relevance: <%=article.relevance  %>
+						</div>
+					<% elsif article.score.to_f == 0%>
+						<div id="whiteScore">
+							Score: <%=article.score  %>
+							<br>
+							Relevance: <%=article.relevance  %>
+						</div>
+					<% elsif article.score.to_f >= 0.1%>
+						<div id="greenScore">
+							Score: <%=article.score  %>
+							<br>
+							Relevance: <%=article.relevance  %>
+						</div>
+					<% else %>
+						<div id="yellowScore">
+							Score: <%=article.score  %>
+							<br>
+							Relevance: <%=article.relevance  %>
+						</div>
+					<% end %>
+					</div>
+			<br>
+			<div id= "articleText" ><%=truncate(article.text, length: 350)%></div>
+			<div class="ui checkbox">
+	  			<input type="checkbox" name="article_ids[]" value="<%=article.id%>">
+	  			<label>Select & Compare</label>
+			</div>
+			<div id="chartsAvailable">
+  			<i class="bar chart icon"></i>
+	  			<i class="pie chart icon"></i>
+	  			<i class="line chart icon"></i>
+	  		</div>
+		</div>
+			
+		<% end %>
+    <% end %>
+
+</div>
+
+
+

@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
 	belongs_to :user
+  belongs_to :topic
 
      validates :url, presence: true
      has_many :contexts

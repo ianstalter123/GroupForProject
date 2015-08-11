@@ -1,0 +1,26 @@
+<div class="ui divider"></div>
+  	<div id= "newArticle" class= "ui relaxed grid">
+		<div id= "titleArticle" class= "four wide column"> 
+			<h1>Add A Topic</h1>
+		</div>
+
+  		<div id ="horizontalDiv" class="ui two column very 	relaxed stackable grid">
+			<div class= "ui vertical divider"></div>
+		</div>
+
+  		<div class= "ten wide column">
+  		<div id="label" class="ui form">
+			<%= form_for @topic do |f| %>
+				<%= f.label "title" %>
+
+				<%= f.text_field :title  %>
+				<div id = "addButton" class= "ui button">
+				<%= f.submit "Add Your Topic"  %>
+				</div>
+			<%end %>
+		</div>
+		</div>
+	</div>
+<div class="ui divider"></div>
+
+

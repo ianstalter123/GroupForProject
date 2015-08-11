@@ -36,61 +36,26 @@
 	</div>
 
 	<div id= "articles" class= "ui relaxed grid">
-		<% @articles.each do |article| %>
-		<!--if article.text != 'nil'-->
+		<% @topics.each do |topic| %>
+
+		<%@score = 0%>
+    <%topic.articles.each do |article|%>
+      <%@score += article.score.to_f%>
+    <%end%>
+    <%if topic.articles.length > 0  %>
+    <%@score /= topic.articles.length%>
+    <%end  %>
+	
 		<div id= "article" class= "four wide column">
-		<div id= "centerMe">
-			<img id= "articleImage" src = <%=article.image  %> style="height:100px"  ></img>
-		</div>
-			<div id= "articleTitle" ><%= link_to article.title, article_path(article) %></div>
 		
-			<div id= "articleBase" >Author: <%=article.author  %></div>
-			<div id= "articleBase" >Date: <%=article.date_published  %></div>
-			<br>
-			<div id="score">
+		<div id= "articleTitle" ><%= link_to topic.title, topic_path(topic) %></div>
+		
 
-					<% if article.score.to_f <= -0.1 %>
-
-						<div id="redScore">
-							Score: <%=article.score  %>
-							<br>
-							Relevance: <%=article.relevance  %>
-						</div>
-
-					<% elsif article.score.to_f <= 0%>
-
-						<div id="orangeScore">
-							Score: <%=article.score  %>
-							<br>
-							Relevance: <%=article.relevance  %>
-						</div>
-					<% elsif article.score.to_f == 0%>
-						<div id="whiteScore">
-							Score: <%=article.score  %>
-							<br>
-							Relevance: <%=article.relevance  %>
-						</div>
-					<% elsif article.score.to_f >= 0.1%>
-						<div id="greenScore">
-							Score: <%=article.score  %>
-							<br>
-							Relevance: <%=article.relevance  %>
-						</div>
-					<% else %>
-						<div id="yellowScore">
-							Score: <%=article.score  %>
-							<br>
-							Relevance: <%=article.relevance  %>
-						</div>
-					<% end %>
-					</div>
-			<br>
-			<div id= "articleText" ><%=truncate(article.text, length: 350)%></div>
-			<div class="ui checkbox">
-	  			<input type="checkbox" name="article_ids[]" value="<%=article.id%>">
-	  			<label>Select & Compare</label>
-			</div>
+		
+		Average sentiment: <%=@score.to_f.round(3)  %>
+		
 	  		<div id="chartsAvailable">
+	  		
 	  			<i class="bar chart icon"></i>
 	  			<i class="pie chart icon"></i>
 	  			<i class="line chart icon"></i>

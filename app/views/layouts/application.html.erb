@@ -21,15 +21,26 @@
 	<div id = "navBar" class= "ui large inverted vertical masthead center aligned segment">
 		<div id= "leftMenu"  class = "item"><%= link_to "HOME", root_path %></div>
 		<div id= "leftMenu" class = "item"><%= link_to "ABOUT", about_path %></div>
-		<div id= "leftMenu" class = "item"><%= form_tag("/articles/crawl", method: "get",class:"test" ) do %>
- 
+		<div id= "leftMenu" class = "item">
+ <%@topic_id = params[:id]  %>
+
+ <%if @topic_id   %>
+		<%= form_tag(crawl_path, method: "get",class:"test" ) do %>
+
+
   <%= text_field_tag(:q,) %>
+
+  <%= hidden_field_tag(:t, @topic_id.to_i) %>
+ 
+
+ 
   <%= submit_tag("Crawl") %>
-<% end %></div>
+<% end %>
+<%end  %></div>
 		
 		<%if session[:user_id]%>
 			<%@user = User.find_by_id(session[:user_id])  %>
-			<div id = "leftMenu" class = "item"><%= link_to "NEW ARTICLE", new_user_article_path(session[:user_id]) %></div>
+			<div id = "leftMenu" class = "item"><%= link_to "NEW TOPIC", new_topic_path %></div>
 			<div id= "rightMenu">
 					<div   class="ui inverted button">
 				<i class="child icon"></i>
